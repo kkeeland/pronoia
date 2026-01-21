@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+:root {
+  /* Colors - Black and White only */
+  --color-primary: #1a1a1a;
+  --color-secondary: #666666;
+  --color-accent: #1a1a1a;
+  --color-background: #ffffff;
+  --color-surface: #f9fafb;
+  --color-border: #e5e7eb;
+
+  /* Typography */
+  --font-base-size: 18px;
+  --line-height-body: 1.7;
+  --line-height-heading: 1.2;
+}
+
+@theme inline {
+  --color-primary: #1a1a1a;
+  --color-secondary: #666666;
+  --color-accent: #1a1a1a;
+  --color-background: #ffffff;
+  --color-surface: #f9fafb;
+  --color-border: #e5e7eb;
+
+  --font-sans: var(--font-inter);
+
+  /* Custom spacing for prose */
+  --spacing-prose: 65ch;
+}
+
+body {
+  font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+  font-size: var(--font-base-size);
+  line-height: var(--line-height-body);
+  color: var(--color-primary);
+  background: var(--color-background);
+}
+
+/* Typography styles */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: var(--line-height-heading);
+  font-weight: 700;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Selection color */
+::selection {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+/* Link styles - black and white only */
+a {
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+a:hover {
+  opacity: 0.6;
+}
