@@ -24,6 +24,7 @@
   --color-border: #e5e7eb;
 
   --font-sans: var(--font-inter);
+  --font-caveat: var(--font-caveat);
 
   /* Custom spacing for prose */
   --spacing-prose: 65ch;

@@ -9,11 +9,16 @@ export default function HomePage() {
       {/* Hero Section */}
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
         <div className="text-center space-y-6">
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight">
-            Engineered Happiness
-          </h1>
+          <div className="relative inline-block">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight">
+              Engineered Happiness
+            </h1>
+            <span className="absolute -top-4 -right-12 md:-right-16 text-2xl md:text-3xl text-primary/70 rotate-12 font-caveat whitespace-nowrap">
+              at scale
+            </span>
+          </div>
           <p className="text-xl md:text-2xl text-secondary max-w-2xl mx-auto">
-            The world conspires for you when you invest your attention.
+            Your reality conspires for you when you invest your attention.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-8">
             <Link
