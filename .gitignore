@@ -1,0 +1,55 @@
+# Next.js .gitignore
+
+# Dependencies
+node_modules/
+.pnp/
+.pnp.*
+
+# Build output
+.next/
+out/
+build/
+dist/
+
+# Environment & secrets - NEVER commit
+.env
+.env.*
+.env.local
+.env.production
+.env.development
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*oauth*
+*token*.json
+*secret*.json
+*credential*.json
+
+# OS files
+.DS_Store
+._*
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Vercel
+.vercel/
+
+# Debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
+
+# Sync conflict files
+*.sync-conflict-*
+.stfolder/
