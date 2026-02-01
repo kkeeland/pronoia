@@ -1,0 +1,184 @@
+---
+title: "The Swarm Is Coming. Here's What Nobody's Talking About."
+date: "2026-02-03"
+excerpt: "The AI conversation is stuck on which model is smartest. The real revolution is what happens when 100 agents work together — and nobody's built the coordination layer yet."
+featured: false
+---
+
+Last week, a hundred AI agents completed a software engineering task together. Not a hundred copies of the same bot. A hundred specialized agents — planners, coders, reviewers, testers — coordinating in real time. 1,500 tool calls. 4.5x faster than a single agent working alone.
+
+This was Kimi K2.5's multi-agent swarm. And almost nobody is talking about what it actually means.
+
+The entire AI conversation right now is stuck in a loop. Which model is smartest? Is Claude better than GPT? Did Gemini catch up? Should I use Cursor or Windsurf?
+
+None of that matters.
+
+The revolution isn't a smarter brain. It's a smarter *team*.
+
+## The Mainframe Mistake
+
+We've seen this before.
+
+In the 1960s, computing meant one big mainframe. If you wanted more computing power, you bought a bigger mainframe. The entire industry was organized around the question: which mainframe is most powerful?
+
+Then someone asked a different question. What if instead of one big computer, we used many small ones working together?
+
+That question created the internet. It created cloud computing. It created everything you're using right now to read this.
+
+The AI industry is in its mainframe era. One model. One context window. One agent trying to do everything. And we keep making that one agent bigger, smarter, faster — pouring billions into the race for a better monolith.
+
+But the future isn't a better monolith. It's a swarm.
+
+## What Kimi Actually Showed Us
+
+When Moonshot AI released K2.5's multi-agent benchmarks, the headlines focused on the speed. 4.5x faster. That's impressive. But speed isn't the breakthrough.
+
+The breakthrough is that 100 agents, working on the same problem, didn't descend into chaos.
+
+Think about what that requires. Task decomposition — breaking a complex job into pieces that can be done in parallel. Dependency management — knowing which pieces need to finish before other pieces can start. State coordination — making sure Agent 47 knows what Agent 12 already discovered. Conflict resolution — handling the moment when two agents make contradictory decisions.
+
+That's not an AI problem. That's a *management* problem. And it's the hardest problem in business, in software, in any system where independent actors need to produce coherent output.
+
+Kimi didn't just build a faster AI. They built an AI *organization*.
+
+And organizations have different scaling laws than individuals.
+
+## Amdahl's Law for Intelligence
+
+There's a principle in computing called Amdahl's Law. It says that the speedup you get from parallelism is limited by the portion of work that can't be parallelized. If 10% of a task is inherently sequential, then even with infinite parallel workers, you'll never get more than a 10x speedup.
+
+The same law applies to AI swarms. And it's the thing nobody in the "just throw more agents at it" camp wants to talk about.
+
+You can't get value from 100 agents if the task decomposition is bad. If Agent 1 needs to finish before Agent 2 can start, and Agent 2 needs to finish before Agent 3 can start — congratulations, you've built a very expensive sequential pipeline. A hundred workers standing in line, waiting.
+
+The bottleneck was never intelligence. The bottleneck is coordination.
+
+I know this because I run five businesses. I don't need smarter people. I need people who know what each other are doing, who don't duplicate work, who can pick up where someone else left off without a three-hour sync meeting.
+
+That's the exact same problem AI swarms face. And right now, almost nobody is solving it.
+
+## The Workforce That Doesn't Sleep
+
+Let me make this concrete.
+
+Imagine it's Tuesday morning. You run a mid-sized e-commerce company. You wake up, make coffee, and check your dashboard. Here's what happened while you slept:
+
+Your research agent scanned 200 competitor pages and flagged three pricing changes that affect your margins. Your SEO agent noticed a ranking drop on your top product page, diagnosed it as a crawl issue, and submitted a fix. Your finance agent reconciled yesterday's transactions and flagged an unusual chargeback pattern. Your marketing agent drafted three email variants for a campaign launching Thursday, A/B tested the subject lines against your historical data, and queued the winner for your approval. Your dev agent picked up the two highest-priority bug fixes from the backlog, wrote the code, ran the tests, and opened pull requests.
+
+All of this happened between midnight and 6 AM. No meetings. No Slack threads. No standups.
+
+That's not a chatbot. That's a workforce.
+
+And here's the part that gives me chills. This isn't science fiction. Every individual capability I just described exists today. Claude can write marketing copy. GPT can analyze financial data. Gemini can process visual content. Cursor's agent mode can write and test code.
+
+The technology exists. What doesn't exist is the layer that connects them.
+
+## The Missing Layer
+
+Right now, the AI ecosystem looks like this. On one side, you have incredible models. Claude, GPT, Gemini, Llama — more powerful every quarter. On the other side, you have frameworks for building agents. CrewAI, LangGraph, AutoGen, Semantic Kernel — good tools for orchestrating multi-step workflows.
+
+But between the models and the frameworks, there's a gap. A void. A missing layer that nobody seems to notice is missing.
+
+There's no persistent state.
+
+When your marketing agent finishes drafting that email campaign, where does the context go? When your dev agent closes a bug, how does your QA agent know to verify it? When your research agent discovers a competitive threat, how does that intelligence flow to your strategy agent?
+
+Right now, the answer is: it doesn't. Each agent runs in its own context window, does its work, and the output evaporates. You're left stitching everything together manually. Copy-pasting between tools. Forwarding messages between bots. Becoming the coordination layer yourself.
+
+That's not augmentation. That's a worse version of managing a remote team, except the team has amnesia.
+
+The infrastructure we need is the thing nobody's building. Not a smarter model. Not a better framework. A persistent, shared coordination layer where agents can see each other's work, track dependencies, and pick up where others left off.
+
+Task state that survives between sessions. Between models. Between frameworks.
+
+I've started building something in this direction. It's called [trak](https://github.com/kkeeland/trak) — a local-first, agent-native task coordination system. It's early. It's rough. But the design principle is simple: agents need a shared source of truth that isn't trapped inside any single vendor's ecosystem.
+
+Not because I'm a visionary. Because I got tired of being the human relay between my own AI tools.
+
+## The Platform War Nobody Sees
+
+Here's what's interesting. The big players are starting to sense this gap — even if they haven't named it yet.
+
+Linear is building agent APIs. Their thesis is that project management should be readable and writable by AI, not just humans. They're right.
+
+GitHub is pushing agentic workflows — Copilot agents that can open PRs, respond to issues, and coordinate across repos. They see the future is multi-agent. They're right too.
+
+Claude Code just shipped Tasks — a way to give Claude persistent work that survives across sessions. Anthropic knows that single-turn conversations aren't enough. Also right.
+
+These aren't enemies. They're proof the category is real.
+
+But notice what each of them is building. Linear's coordination layer works inside Linear. GitHub's works inside GitHub. Claude's Tasks work inside Claude's ecosystem. Each one is building the coordination layer *for their own platform*.
+
+That's the mainframe move again. One system to rule them all. Your agents coordinate, but only if they all live in our walled garden.
+
+The internet didn't work that way. TCP/IP won because it was an open protocol that let different systems talk to each other. Email won because SMTP didn't care whether you were on AOL or Yahoo or your own server.
+
+The multi-agent coordination layer needs to work the same way. It needs to let a Claude agent hand off to a GPT agent, which queues work for a Gemini agent, which reports back to a Llama agent running locally — all sharing the same task state, the same context, the same understanding of what's been done and what's left.
+
+That layer shouldn't be owned by any model provider. It should be open infrastructure. Portable. Vendor-neutral. Local-first so you're not dependent on someone else's server to coordinate your own team.
+
+That's the bet I'm making with trak. Not because it's the only answer, but because someone needs to prove that the coordination layer can exist outside the walled gardens. And nobody else seems to be building it.
+
+## The Unfair Advantage
+
+I keep thinking about what happens when one company figures this out and others don't.
+
+Not which model they use. Not which framework. Whether their agents can coordinate.
+
+Company A has six AI agents. They're all smart. They all work hard. But every morning, the founder spends two hours copying context between them, resolving conflicting outputs, and manually tracking what each one has done. The agents are powerful but isolated. They forget. They repeat work. They contradict each other.
+
+Company B has six AI agents too. Same models. Same capabilities. But they share a coordination layer. When the research agent discovers something, the marketing agent knows. When the dev agent ships a feature, the docs agent updates the changelog. When the finance agent flags a risk, the strategy agent adjusts the plan.
+
+Company B's founder wakes up to a dashboard, makes four decisions over coffee, and moves on to the creative work that actually needs a human.
+
+Company A's founder is still neck-deep in AI babysitting.
+
+Same tools. Same intelligence. Completely different outcomes. The gap isn't talent. It's coordination.
+
+And that gap will widen. Fast. Because coordination compounds. Every day that Company B's agents successfully hand off work to each other, they accumulate context. Institutional memory. A shared understanding that deepens over time. Their agents don't just work — they *learn the business*.
+
+Company A's agents start fresh every morning.
+
+This is the unfair advantage nobody's talking about. Not smarter AI. *AI that doesn't forget.*
+
+## The Morning After
+
+Close your eyes for a second. It's eighteen months from now.
+
+You wake up. No alarm — you sleep well these days because the anxiety of "am I on top of everything" has faded. Your agent swarm ran through the night. Not frantically. Methodically.
+
+Your phone shows a summary. Three decisions need your input. One is a pricing change your finance agent recommends based on margin analysis. One is a content calendar your marketing agent drafted for Q3. One is a hiring question your ops agent flagged — it found that your support ticket volume is trending up and your current team will be underwater in six weeks.
+
+Each decision has context. Not a vague AI summary, but the actual reasoning. The data that led to the recommendation. The alternatives considered and rejected. The confidence level.
+
+You make your three decisions over breakfast. Takes fifteen minutes.
+
+By the time you sit down at your desk, the swarm has already executed. The pricing page is updated. The content calendar is scheduled. The job posting is drafted and waiting for your review.
+
+You didn't manage anybody. You didn't coordinate anything. You *decided*. That's it. The highest-leverage thing a human can do — exercise judgment — and you got to do it without first spending three hours becoming informed enough to have judgment.
+
+That's the swarm future. Not AI replacing humans. AI handling the coordination tax so humans can do the thing humans are uniquely good at: making decisions that matter under genuine uncertainty.
+
+## The Inflection
+
+We're at a very specific moment.
+
+AI has crossed the threshold from "tool you use" to "entity that acts." Agents can write code, send emails, analyze data, and make API calls. That happened in 2025 and it's old news now.
+
+The next threshold — the one we're approaching right now — is from "entity that acts" to "team that coordinates." That's the jump from individual agency to collective intelligence. From solo performer to orchestra.
+
+The companies and builders who focus on this layer — the boring, unglamorous infrastructure of task state, dependency graphs, and cross-model handoffs — will define the next era of AI. Not the ones chasing benchmark scores.
+
+I don't know exactly what that infrastructure will look like. I have my bet with trak. Linear has theirs. GitHub has theirs. Someone reading this might build something better than all of us.
+
+Good. That's how infrastructure gets built. Not by one player getting it right, but by many players converging on what works.
+
+The swarm is coming. It's not a question of if. The only question is whether you'll lead it or be displaced by someone who does.
+
+The universe tends toward coordination. Atoms form molecules. Cells form organisms. Humans form companies. And now, agents form swarms.
+
+That's not a threat. That's pronoia at scale.
+
+The world is reorganizing itself in your favor.
+
+But only if you're building the coordination layer — not waiting for someone to hand it to you.
