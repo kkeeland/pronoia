@@ -88,6 +88,42 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Projects Teaser */}
+      <section className="bg-surface py-20">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Things I&apos;ve Built</h2>
+          <p className="text-lg text-secondary mb-10 max-w-2xl">
+            From peptide research platforms to THC beverage brands — I build at the intersection of code and real-world impact.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10">
+            {[
+              { name: "Peptok.ai", desc: "Science-backed peptide research platform", url: "https://peptok.ai" },
+              { name: "EmbodyPeptides.com", desc: "Research peptide vendor", url: "https://embodypeptides.com" },
+              { name: "Adaptaphoria.com", desc: "Hemp-derived Delta-9 beverages", url: "https://adaptaphoria.com" },
+            ].map((p) => (
+              <a
+                key={p.name}
+                href={p.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block bg-white rounded-xl p-6 border border-border hover:shadow-md transition-shadow group"
+              >
+                <h3 className="font-bold text-lg mb-2 group-hover:opacity-60 transition-opacity">{p.name}</h3>
+                <p className="text-secondary text-sm">{p.desc}</p>
+              </a>
+            ))}
+          </div>
+          <div className="text-center">
+            <Link
+              href="/projects"
+              className="inline-block px-8 py-3 border-2 border-primary text-primary rounded-lg hover:bg-white transition-colors font-medium"
+            >
+              View All Projects →
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="bg-primary text-white py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
