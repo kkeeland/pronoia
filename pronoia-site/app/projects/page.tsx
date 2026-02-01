@@ -12,7 +12,7 @@ const projects = [
         tagline: "Your Science-Backed Guide to Peptides",
         description:
             "Research-grade peptide profiles, dosage calculators, and vendor comparisons backed by peer-reviewed studies. Built to cut through the noise and give people real, evidence-based peptide information.",
-        role: "Founder & Developer",
+        role: "Developer",
         url: "https://peptok.ai",
         tags: ["Next.js", "Supabase", "AI", "Health"],
     },
@@ -21,7 +21,7 @@ const projects = [
         tagline: "The World's Purest Peptides",
         description:
             "A research peptide vendor built from the ground up — from brand identity to e-commerce infrastructure. Focused on purity, transparency, and trust in a space that desperately needs it.",
-        role: "Founder & Developer",
+        role: "Developer",
         url: "https://embodypeptides.com",
         tags: ["E-Commerce", "Branding", "Health"],
     },
