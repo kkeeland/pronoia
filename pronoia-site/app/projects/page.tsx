@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import Image from "next/image";
 
 export const metadata: Metadata = {
     title: "Projects - Pronoia",
@@ -9,12 +9,12 @@ export const metadata: Metadata = {
 const projects = [
     {
         name: "Peptok.ai",
-        emoji: "🧪",
         tagline: "Your Science-Backed Guide to Peptides",
         description:
             "Research-grade peptide profiles, dosage calculators, and vendor comparisons backed by peer-reviewed studies. Built to cut through the noise and give people real, evidence-based peptide information.",
         role: "Developer",
         url: "https://peptok.ai",
+        screenshot: "/screenshots/peptok.png",
         tags: ["Next.js", "Supabase", "AI", "Health"],
         accent: {
             border: "border-l-[#6B8F71]",
@@ -26,12 +26,12 @@ const projects = [
     },
     {
         name: "EmbodyPeptides.com",
-        emoji: "💊",
         tagline: "The World's Purest Peptides",
         description:
             "A research peptide vendor built from the ground up — from brand identity to e-commerce infrastructure. Focused on purity, transparency, and trust in a space that desperately needs it.",
         role: "Developer",
         url: "https://embodypeptides.com",
+        screenshot: "/screenshots/embody.png",
         tags: ["E-Commerce", "Branding", "Health"],
         accent: {
             border: "border-l-[#2563EB]",
@@ -43,12 +43,12 @@ const projects = [
     },
     {
         name: "Adaptaphoria.com",
-        emoji: "🍹",
         tagline: "Hemp-Derived Delta-9 Beverages",
         description:
             "THC-infused beverage brand bringing legal, hemp-derived Delta-9 drinks to market. Built the digital presence and e-commerce platform for this emerging consumer brand.",
         role: "Contractor / Developer",
         url: "https://adaptaphoria.com",
+        screenshot: "/screenshots/adaptaphoria.png",
         tags: ["Shopify", "Branding", "Cannabis"],
         accent: {
             border: "border-l-[#D97706]",
@@ -87,37 +87,49 @@ export default function ProjectsPage() {
                             className="block group"
                         >
                             <article
-                                className={`bg-surface rounded-xl p-8 md:p-10 border border-border border-l-4 ${project.accent.border} ${project.accent.borderHover} ${project.accent.shadow} hover:-translate-y-0.5 transition-all duration-200`}
+                                className={`bg-surface rounded-xl border border-border border-l-4 ${project.accent.border} ${project.accent.borderHover} ${project.accent.shadow} hover:-translate-y-0.5 transition-all duration-200 overflow-hidden`}
                             >
-                                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-3">
-                                    <h2 className="text-2xl md:text-3xl font-bold group-hover:opacity-60 transition-opacity">
-                                        <span className="mr-2">{project.emoji}</span>
-                                        {project.name}
-                                    </h2>
-                                    <span
-                                        className={`text-sm border rounded-full px-3 py-1 whitespace-nowrap self-start ${project.accent.role}`}
-                                    >
-                                        {project.role}
-                                    </span>
+                                {/* Screenshot */}
+                                <div className="relative w-full h-48 md:h-64 bg-gray-100 overflow-hidden">
+                                    <Image
+                                        src={project.screenshot}
+                                        alt={`${project.name} homepage`}
+                                        fill
+                                        className="object-cover object-top group-hover:scale-[1.02] transition-transform duration-300"
+                                    />
                                 </div>
-                                <p className="text-lg font-medium text-primary/80 mb-4">
-                                    {project.tagline}
-                                </p>
-                                <p className="text-secondary leading-relaxed mb-6">
-                                    {project.description}
-                                </p>
-                                <div className="flex flex-wrap items-center gap-2">
-                                    {project.tags.map((tag) => (
+
+                                {/* Content */}
+                                <div className="p-8 md:p-10">
+                                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-3">
+                                        <h2 className="text-2xl md:text-3xl font-bold group-hover:opacity-60 transition-opacity">
+                                            {project.name}
+                                        </h2>
                                         <span
-                                            key={tag}
-                                            className={`text-xs border rounded-md px-2 py-1 ${project.accent.tag}`}
+                                            className={`text-sm border rounded-full px-3 py-1 whitespace-nowrap self-start ${project.accent.role}`}
                                         >
-                                            {tag}
+                                            {project.role}
                                         </span>
-                                    ))}
-                                    <span className="ml-auto text-primary font-medium group-hover:underline text-sm">
-                                        Visit site →
-                                    </span>
+                                    </div>
+                                    <p className="text-lg font-medium text-primary/80 mb-4">
+                                        {project.tagline}
+                                    </p>
+                                    <p className="text-secondary leading-relaxed mb-6">
+                                        {project.description}
+                                    </p>
+                                    <div className="flex flex-wrap items-center gap-2">
+                                        {project.tags.map((tag) => (
+                                            <span
+                                                key={tag}
+                                                className={`text-xs border rounded-md px-2 py-1 ${project.accent.tag}`}
+                                            >
+                                                {tag}
+                                            </span>
+                                        ))}
+                                        <span className="ml-auto text-primary font-medium group-hover:underline text-sm">
+                                            Visit site →
+                                        </span>
+                                    </div>
                                 </div>
                             </article>
                         </a>
