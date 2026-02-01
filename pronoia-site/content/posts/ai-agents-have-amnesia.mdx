@@ -1,0 +1,157 @@
+---
+title: "I Built a Task Tracker Because My AI Agents Have Amnesia"
+date: "2026-02-02"
+excerpt: "The missing piece of the AI agent stack isn't better models. It's persistent memory between sessions. So I built it."
+featured: true
+---
+
+Every morning, I explain my life to a machine that has already forgotten everything I told it yesterday.
+
+I run five businesses. I use AI agents — Claude Code, Cursor, Codex — across all of them. These agents are brilliant. They can build entire auth systems in an afternoon, refactor a codebase overnight, generate tests that would take a human team a week.
+
+And every single session starts the same way.
+
+"Hey, so yesterday we were working on the API refactor. Remember? No, not that one. The one with the JWT refresh tokens. We decided to go with the middleware approach, not the decorator pattern. No, I know I didn't write that down. I'm telling you now. Again."
+
+This is the dirty secret of the AI agent revolution. The agents aren't the bottleneck.
+
+You are.
+
+## The Re-Explaining Tax
+
+I didn't notice it at first. When you're using one agent on one project, the re-context overhead feels minor. A few sentences at the start of a session. A quick refresher. No big deal.
+
+Then I scaled up.
+
+Five businesses. Multiple agents per business. Some building features, some reviewing code, some writing tests, some deploying. And suddenly I was spending more time *explaining what happened yesterday* than making decisions about what should happen today.
+
+The math is brutal. If you spend 10 minutes re-contextualizing at the start of every agent session, and you spin up 8 sessions a day, that's 80 minutes. Gone. Every day. Not on building. Not on thinking. On *repeating yourself to machines that should already know*.
+
+But the time wasn't even the worst part.
+
+The worst part was the collisions.
+
+## When Agents Step on Each Other
+
+A Tuesday in January. I had Claude Code building a new API endpoint for one of my projects while Cursor was refactoring the data layer in the same repo. Neither knew the other existed. Neither knew the other was working.
+
+Claude Code created a new service that imported a module Cursor had just renamed. Cursor restructured a database schema that Claude Code's new endpoint depended on. When I pulled both branches together, nothing worked.
+
+My first reaction was frustration with the tools. Why can't they coordinate? Why don't they know about each other?
+
+My second reaction — the one that actually mattered — was realizing this was entirely my fault.
+
+I was the coordination layer. I was the router, the dispatcher, the shared memory. And I was terrible at it. Not because I'm incompetent, but because humans are not meant to be middleware. We're meant to be decision-makers. Strategists. The person who says "build this" and "that's wrong, try again."
+
+Instead, I was a human message bus, shuttling context between agents that couldn't talk to each other.
+
+Something had to change.
+
+## Why "Just Use GitHub Issues" Doesn't Work
+
+The obvious answer — the one every engineer suggests — is GitHub Issues. Or Jira. Or Linear. Or whatever project management tool you already use.
+
+I tried all of them.
+
+Here's the problem. These tools were built for humans. They assume the person reading the issue has persistent memory, context from meetings, Slack history, organizational awareness. They assume you can read between the lines. An issue titled "Fix the auth bug" makes sense to a human who was in the standup where that bug was discussed.
+
+An AI agent reads that title and has no idea what auth bug, in which service, discovered when, what was already tried, or what constraints matter.
+
+But the deeper problem isn't the format. It's the speed.
+
+GitHub Issues requires network calls. API authentication. Rate limits. Pagination. A single "what should I work on next?" query can take 3-5 seconds. That doesn't sound like much until you realize an agent might need to check task status dozens of times during a session. Every context switch is a network round-trip. Every status update is an API call.
+
+AI agents think at the speed of local disk. Making them coordinate through cloud APIs is like making a Formula 1 car stop at traffic lights.
+
+I needed something that ran at the speed of thought. Local. Instant. No network. No API keys. No accounts.
+
+## What My Morning Looks Like Now
+
+I built trak. It's a CLI task tracker that lives in your repo, backed by SQLite, designed from day one for AI agents — not humans.
+
+Here's what changed.
+
+I wake up. Coffee. I open a terminal and type `trak ready`. In under 100 milliseconds — not seconds, milliseconds — I see every unblocked task across all my projects. What's waiting. What's in progress. What got finished overnight.
+
+I spin up a Claude Code session. It reads the trak context automatically — every task's full journal, every decision, every piece of prior work. No re-explaining. No "remember yesterday?" The machine starts *exactly* where the last session left off.
+
+I assign tasks. Claude Code gets the feature build. Cursor gets the review. I type two commands and walk away.
+
+When I come back, both agents have logged their work into the task journals. I can see exactly what happened, in what order, and what it cost. If something went wrong, I can trace the full dependency tree backwards to find where things diverged.
+
+My role shifted. I stopped being the router and started being the decision-maker. I stopped *spending* attention on coordination and started *investing* it in judgment.
+
+That shift — from spending to investing — is everything.
+
+## The Verification Chain
+
+Here's the concept that changed my relationship with AI agents entirely.
+
+Agent 1 builds something. Agent 2 reviews it. The full chain is tracked — who built, who verified, what they found, what it cost.
+
+```
+trak assign api-auth claude-code
+trak verify api-auth --pass --agent cursor
+```
+
+Two commands. But what they represent is a trust architecture.
+
+Before trak, I was the only verifier. Every piece of agent output went through me. I was the quality gate, the code reviewer, the sanity checker. For five businesses. It doesn't scale. I was drowning.
+
+The verification chain means agents can check each other's work. Not perfectly — not yet. But enough to catch the obvious stuff. Enough to escalate only the real decisions to me.
+
+This changes the trust equation fundamentally. I don't need to trust any single agent to be perfect. I need to trust the *system* — the chain of build-verify-track — to surface problems before they compound.
+
+Trust isn't about individual reliability. It's about systemic accountability.
+
+And accountability requires memory. Which is exactly what agents don't have — unless you give it to them.
+
+## The Pronoia of Coordination
+
+I've been writing about pronoia — the belief that reality conspires in your favor — for a while now. And I keep coming back to one idea: pronoia isn't passive. It's not "good things happen to me." It's "good things happen *when I invest attention into the right places*."
+
+Attention is the currency. Where you put it determines what grows.
+
+For the last year, I've been pouring attention into the wrong place. I was investing it in re-explanation. In context-shuttling. In being the human bridge between machines that forgot each other overnight. That attention wasn't *going* anywhere. It was evaporating. Every morning, back to zero.
+
+Trak is, at its core, an attention investment tool.
+
+When you give your agents persistent memory — when they can pick up where they left off, when they can see what other agents have done, when decisions are recorded instead of repeated — you stop spending attention on coordination overhead. You get that attention back. And you can invest it in the things that actually compound: strategy, architecture, the decisions that shape what gets built and why.
+
+The universe conspires for you when you stop wasting your presence on things that don't need you. Coordination doesn't need you. A SQLite database can do it faster and more reliably than you ever could.
+
+What needs you is judgment. Vision. The weird, irrational, human conviction that *this* is worth building and *that* isn't. No agent has that. No task tracker replaces that.
+
+But a task tracker can free you up to do it.
+
+## Why Open Source
+
+The multi-agent future is coming whether we build the coordination layer or not. The question is whether that layer will be open or locked behind a SaaS dashboard with a $49/month "team plan."
+
+I've seen this movie before. An obvious infrastructure need emerges. Some startup wraps it in a subscription. Everyone becomes dependent on a cloud service for something that should be a local utility.
+
+Trak is MIT-licensed, runs entirely on your machine, stores everything in a single SQLite file in your repo, and has zero external dependencies. No accounts. No telemetry. No network calls.
+
+Not because I'm anti-business. Because coordination infrastructure should be a public good. The plumbing that lets agents work together shouldn't be something you rent.
+
+The repo is at [github.com/kkeeland/trak](https://github.com/kkeeland/trak). It's a `npm install -g trak` and a `trak init` away from changing how your mornings work.
+
+## The Insight
+
+The AI revolution has a memory problem.
+
+We keep building better models, better reasoning, better context windows. And we keep ignoring the fact that every session starts from zero. That agents can't see each other's work. That the human in the loop is spending most of their loop-time on logistics, not decisions.
+
+The missing piece of the agent stack isn't a better brain.
+
+It's a better notebook.
+
+I built one. It's fast, it's local, it's free. And the mornings are different now.
+
+I drink my coffee. I type `trak ready`. And for the first time in a year of working with AI agents, I feel like I'm steering the ship instead of bailing water.
+
+The agents still have amnesia.
+
+They just don't need to remember anymore.
+
+The system remembers for them.
