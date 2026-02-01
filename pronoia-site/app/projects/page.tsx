@@ -16,13 +16,6 @@ const projects = [
         url: "https://peptok.ai",
         screenshot: "/screenshots/peptok.png",
         tags: ["Next.js", "Supabase", "AI", "Health"],
-        accent: {
-            border: "border-l-[#6B8F71]",
-            borderHover: "hover:border-l-[#5A7D60]",
-            shadow: "hover:shadow-[0_4px_20px_rgba(107,143,113,0.15)]",
-            tag: "bg-[#6B8F71]/10 text-[#5A7D60] border-[#6B8F71]/20",
-            role: "bg-[#6B8F71]/8 border-[#6B8F71]/15 text-[#5A7D60]",
-        },
     },
     {
         name: "EmbodyPeptides.com",
@@ -33,13 +26,6 @@ const projects = [
         url: "https://embodypeptides.com",
         screenshot: "/screenshots/embody.png",
         tags: ["E-Commerce", "Branding", "Health"],
-        accent: {
-            border: "border-l-[#2563EB]",
-            borderHover: "hover:border-l-[#1D4ED8]",
-            shadow: "hover:shadow-[0_4px_20px_rgba(37,99,235,0.12)]",
-            tag: "bg-[#2563EB]/10 text-[#1D4ED8] border-[#2563EB]/20",
-            role: "bg-[#2563EB]/8 border-[#2563EB]/15 text-[#1D4ED8]",
-        },
     },
     {
         name: "Adaptaphoria.com",
@@ -50,23 +36,13 @@ const projects = [
         url: "https://adaptaphoria.com",
         screenshot: "/screenshots/adaptaphoria.png",
         tags: ["Shopify", "Branding", "Cannabis"],
-        accent: {
-            border: "border-l-[#D97706]",
-            borderHover: "hover:border-l-[#B45309]",
-            shadow: "hover:shadow-[0_4px_20px_rgba(217,119,6,0.12)]",
-            tag: "bg-[#D97706]/10 text-[#B45309] border-[#D97706]/20",
-            role: "bg-[#D97706]/8 border-[#D97706]/15 text-[#B45309]",
-        },
     },
 ];
 
 export default function ProjectsPage() {
     return (
         <div className="min-h-screen bg-white">
-            {/* Subtle gradient hero */}
-            <div className="absolute inset-x-0 top-0 h-72 bg-gradient-to-b from-gray-50/80 via-gray-50/30 to-transparent pointer-events-none" />
-
-            <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
                 <header className="mb-16">
                     <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
                         Projects
@@ -86,9 +62,7 @@ export default function ProjectsPage() {
                             rel="noopener noreferrer"
                             className="block group"
                         >
-                            <article
-                                className={`bg-surface rounded-xl border border-border border-l-4 ${project.accent.border} ${project.accent.borderHover} ${project.accent.shadow} hover:-translate-y-0.5 transition-all duration-200 overflow-hidden`}
-                            >
+                            <article className="bg-surface rounded-xl border border-border hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 overflow-hidden">
                                 {/* Screenshot */}
                                 <div className="relative w-full h-48 md:h-64 bg-gray-100 overflow-hidden">
                                     <Image
@@ -105,9 +79,7 @@ export default function ProjectsPage() {
                                         <h2 className="text-2xl md:text-3xl font-bold group-hover:opacity-60 transition-opacity">
                                             {project.name}
                                         </h2>
-                                        <span
-                                            className={`text-sm border rounded-full px-3 py-1 whitespace-nowrap self-start ${project.accent.role}`}
-                                        >
+                                        <span className="text-sm text-secondary bg-white border border-border rounded-full px-3 py-1 whitespace-nowrap self-start">
                                             {project.role}
                                         </span>
                                     </div>
@@ -121,7 +93,7 @@ export default function ProjectsPage() {
                                         {project.tags.map((tag) => (
                                             <span
                                                 key={tag}
-                                                className={`text-xs border rounded-md px-2 py-1 ${project.accent.tag}`}
+                                                className="text-xs text-secondary bg-white border border-border rounded-md px-2 py-1"
                                             >
                                                 {tag}
                                             </span>
