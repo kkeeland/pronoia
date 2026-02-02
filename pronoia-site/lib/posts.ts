@@ -38,8 +38,10 @@ export function getAllPosts(): Post[] {
                 content,
                 readTime: readingTime(content).text,
                 featured: data.featured || false,
+                draft: data.draft || false,
             };
-        });
+        })
+        .filter((post) => !post.draft);
 
     // Sort posts by date
     return allPosts.sort((a, b) => {
@@ -56,6 +58,10 @@ export function getPostBySlug(slug: string): Post | null {
         const fullPath = path.join(postsDirectory, `${slug}.mdx`);
         const fileContents = fs.readFileSync(fullPath, "utf8");
         const { data, content } = matter(fileContents);
+
+        if (data.draft) {
+            return null;
+        }
 
         return {
             slug,
