@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export const metadata: Metadata = {
     title: "The Pronoia Manifesto - Pronoia",
-    description: "Pronoia is not blind optimism. It is recognizing that reality conspires for you.",
+    description: "Pronoia is not naive optimism. It is recognizing that reality conspires for you.",
 };
 
 export default function ManifestoPage() {
@@ -31,7 +31,7 @@ export default function ManifestoPage() {
 
                 <div className="prose prose-lg max-w-none space-y-8 text-lg leading-relaxed">
                     <p className="text-xl md:text-2xl font-medium text-center">
-                        Pronoia is not blind optimism.<br />
+                        Pronoia is not naive optimism.<br />
                         It is recognizing that reality conspires for you.
                     </p>
 
@@ -75,7 +75,7 @@ export default function ManifestoPage() {
                     </ul>
 
                     <p>
-                        We call attention <em>spent</em> when it blinds us to that support.
+                        We call attention <em>spent</em> when it hides that support from us.
                     </p>
 
                     <p>
