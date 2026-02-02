@@ -1,0 +1,172 @@
+---
+title: "Gas Town: What Happens When Your AI Agents Need to Work Together"
+date: "2026-02-04"
+excerpt: "One agent is powerful. A coordinated fleet is transformative. Gas Town is the orchestration layer that makes multi-agent work actually work."
+featured: false
+---
+
+I have five AI agents working on the same project right now.
+
+One is refactoring the API. Another is writing documentation. A third is building the frontend components. The fourth is handling deployment scripts. The fifth is writing tests.
+
+Two weeks ago, this would have been a disaster. Agents stepping on each other's files. Duplicating work. Drifting from the original plan. The kind of chaos that makes you go back to doing everything yourself.
+
+But something changed. I built Gas Town.
+
+Gas Town — or `gt` if you're typing it — is what happens when you realize the bottleneck in multi-agent systems isn't model intelligence. It's coordination. It's the same problem that human teams face, just accelerated: how do you get a bunch of smart individuals to work together without becoming a mob?
+
+The answer, it turns out, isn't more communication. It's better orchestration. And that's changed everything about how I think about AI collaboration.
+
+## The Single-Agent Ceiling
+
+Here's what I noticed working with one really good AI agent for months: there's a ceiling. Not an intelligence ceiling — the models keep getting smarter. But a complexity ceiling.
+
+One agent, no matter how capable, can only hold so much context. It can work on one thing deeply or many things shallowly. But when you're building something with multiple interconnected systems — when the API changes affect the frontend which affects the tests which affect the documentation — a single agent starts dropping balls.
+
+I'd watch my agent do brilliant work on the authentication system, then forget the implications for the user interface. Or nail the database schema but miss how it impacted the deployment pipeline. Not because it was dumb. Because attention is finite, even for AIs.
+
+The obvious solution seemed to be: more agents. Different agents for different concerns. Specialize them. Let each one go deep on their domain.
+
+But anyone who's managed a software team knows what happens next. Without coordination, specialization becomes fragmentation. Everyone's optimizing for their own piece without seeing the whole. Technical debt compounds. Integration becomes a nightmare.
+
+The human solution is standups, project managers, documentation, planning meetings. All the coordination overhead that software teams love to hate but can't function without.
+
+The AI solution, I realized, needed to be something different. Something that could coordinate at the speed of computation, not the speed of human meetings.
+
+## Enter the Rig
+
+Gas Town starts with a simple insight: every agent needs its own workspace. Not just its own process or its own context window — its own complete working environment. Its own git branch. Its own task queue. Its own local state.
+
+In Gas Town, these are called "rigs." Think of it like Docker for agent workspaces. Each rig is an isolated environment where one agent can work without interfering with any other agent. But unlike Docker containers, rigs are designed specifically for collaborative work. They know how to merge back together.
+
+Here's how it works: when I start a multi-agent project, `gt` spins up a rig for each agent. Each rig gets:
+
+- Its own git branch derived from the current state
+- Its own task queue with specific assignments
+- Its own context and memory space
+- Its own working directory and temp files
+- Its own beads (task tracker) instance for dependencies
+
+The agents can't step on each other because they're literally working in different spaces. But those spaces aren't sealed off — they're designed to integrate.
+
+When an agent finishes its work in a rig, `gt` handles the merge back to main. Not just the code merge — the conceptual merge. Updates to documentation, changes to dependencies, new test requirements. Everything gets coordinated automatically.
+
+It's like having a team where everyone works from home but shows up to the office with perfectly synchronized updates.
+
+## Convoys and Coordination
+
+Individual rigs solve the interference problem. But they don't solve the coordination problem. How do you make sure five agents working on related pieces don't drift apart? How do you track progress across a distributed team?
+
+Gas Town's answer is "convoys" — batches of coordinated work that span multiple rigs.
+
+Here's what I mean: instead of assigning individual tasks to individual agents, I assign a convoy. "Build the user authentication system." That convoy gets broken down into specific assignments:
+
+- Rig A: Design and implement the API endpoints
+- Rig B: Build the frontend login/signup components  
+- Rig C: Write integration tests for the auth flow
+- Rig D: Update documentation and API specs
+- Rig E: Handle deployment configuration changes
+
+Each rig gets its specific piece, but `gt` tracks the convoy as a unit. It knows which pieces depend on which other pieces. It knows when the API changes in Rig A need to be communicated to the frontend work in Rig B. It knows when the tests in Rig C are blocked waiting for Rig A to finish.
+
+Most importantly, it knows when the convoy is complete. Not just when each individual task is done, but when all the pieces actually work together.
+
+This is the part that surprised me most. I thought the hard part would be keeping agents from conflicting. The actually hard part was keeping them aligned. Making sure that when Agent A decides to change the authentication token format, Agent B updates the frontend accordingly, and Agent C adjusts the tests to match.
+
+`gt` handles this through what I call "notification cascades." When one rig makes a change that affects other rigs in the convoy, those rigs get notified automatically. Not just "something changed" — specifically what changed, why it changed, and what they need to do about it.
+
+## The Attention Investment
+
+This is where the pronoia angle becomes clear. Gas Town isn't just a coordination tool — it's an attention amplifier.
+
+Instead of micromanaging five agents, I invest my attention in one thing: task decomposition. Breaking complex projects into clean, interdependent pieces. Getting the convoy structure right.
+
+When I do that well, my attention compounds across all five agents. The clarity I bring to the problem structure propagates through the whole system. Each agent can work at full capacity because it understands exactly what it's responsible for and exactly how its work fits into the larger whole.
+
+It's like the difference between conducting an orchestra and playing all the instruments yourself. The conductor doesn't need to be the best violinist or the best pianist. They need to understand how all the pieces fit together and keep everyone playing the same song.
+
+I've started thinking of this as "meta-attention" — paying attention to the structure of attention itself. Instead of watching the details of what each agent is doing, I watch the patterns of how they coordinate. Instead of reviewing every line of code, I review the interfaces between systems.
+
+The result is that my five AI agents are more capable together than I am alone. Not just because there are more of them, but because they're properly orchestrated. Each one can go deeper on its specialty while staying connected to the whole.
+
+## Real-World Example: The Website Rebuild
+
+Last month I used Gas Town to rebuild the entire pronoia.dev website. The old site was a mess — inconsistent styling, broken links, outdated content. The kind of project that usually takes weeks of careful coordination.
+
+Instead of doing it myself or wrestling with one agent trying to handle everything, I set up a convoy:
+
+**Rig Alpha**: Design system and component library. This agent focused entirely on creating consistent, reusable components. Button styles, typography, color schemes, layout patterns. It didn't worry about content or functionality — just making sure everything looked cohesive.
+
+**Rig Beta**: Content migration and cleanup. This agent went through every existing page, cleaned up the markdown, fixed broken links, updated outdated information. It didn't worry about how things looked — just making sure the information was accurate and well-structured.
+
+**Rig Charlie**: API and data layer. Even a static site needs some dynamic elements — contact forms, newsletter signups, analytics. This agent built the backend services and made sure they integrated cleanly with the frontend.
+
+**Rig Delta**: Integration and testing. This agent's job was making sure all the pieces worked together. It took the design system from Alpha, the content from Beta, and the API work from Charlie and wove them into a functioning website.
+
+**Rig Echo**: Performance and deployment. This agent optimized loading times, set up the build pipeline, configured the CDN, handled all the infrastructure concerns.
+
+The convoy took three days. Each agent worked in parallel on its specialty. When Alpha updated the design tokens, Delta automatically updated the integration layer. When Beta restructured the content, Delta adjusted the routing accordingly. When Charlie changed an API endpoint, Delta updated the frontend calls.
+
+At the end, `gt convoy status` showed me exactly where everything stood. Not just "90% complete" but specifically which pieces were finished, which were in progress, and which were blocked waiting for dependencies.
+
+The result was better than what I could have built alone, and faster than what any single agent could have managed. Not because of raw computational power, but because of proper orchestration.
+
+## Why This Matters Now
+
+We're at an inflection point with multi-agent systems. Kimi K2.5 just demonstrated 100 AI agents working on a single task. Not science fiction — production-ready, happening right now.
+
+The bottleneck isn't going to be model capability. The new models are frighteningly good. The bottleneck is going to be coordination. How do you manage 100 agents without chaos? How do you ensure they're working toward the same goal instead of wandering off in 100 different directions?
+
+Most people are thinking about this wrong. They're thinking about better prompting, better model architectures, better training data. All important. But the real challenge is infrastructure — the coordination layer that makes multi-agent work actually work.
+
+Gas Town is my bet on what that infrastructure looks like. Not a centralized control system trying to micromanage every agent, but a decentralized orchestration layer that lets agents coordinate themselves.
+
+The insight is that coordination isn't about control — it's about information flow. Agents don't need a manager telling them what to do every step of the way. They need good information about what other agents are doing, what dependencies they need to wait for, and what changes they need to respond to.
+
+When that information flows cleanly, coordination emerges naturally. When it doesn't, you get chaos no matter how smart your individual agents are.
+
+## The Future of Work
+
+I keep thinking about what this means for how we'll work in the future. Not replacing human workers with AI agents — that's the boring take. But augmenting human capability with orchestrated AI teams.
+
+Imagine you're an entrepreneur with an idea for a SaaS product. Instead of spending months learning to code or raising money to hire developers, you spin up a convoy: one agent for market research, one for product design, one for frontend development, one for backend, one for marketing copy, one for user testing.
+
+You don't need to be an expert in any of those domains. You need to be good at problem decomposition and convoy coordination. You need to understand how the pieces fit together and invest your attention at the orchestration level.
+
+Your role becomes less "doing the work" and more "designing the work." Less execution, more architecture. Less grinding through tasks, more seeing the patterns that connect tasks together.
+
+This isn't about making humans obsolete. It's about making human insight more powerful. The better you understand the deep structure of problems, the better you can orchestrate AI systems to solve them. The more attention you invest in proper task decomposition, the more capable your AI convoy becomes.
+
+It's the same principle that makes great conductors, great coaches, great directors. They don't need to be the best at every individual skill. They need to understand how all the skills work together.
+
+## Building the Coordination Layer
+
+Gas Town is still experimental. The coordination challenges we're solving today are nothing compared to what we'll face when multi-agent systems become mainstream. But the principles are becoming clear:
+
+**Isolation with integration.** Agents need their own workspace to avoid conflicts, but those workspaces need to merge cleanly.
+
+**Information flow over control.** Don't try to micromanage agents. Give them good information about dependencies and let coordination emerge.
+
+**Attention amplification.** Invest human attention at the orchestration level, not the execution level. Get the structure right and let agents handle the details.
+
+**Convoy thinking.** Track progress across multiple agents as coordinated units, not individual tasks.
+
+The tools will evolve. The interfaces will get better. But the underlying insight will remain: multi-agent coordination is an infrastructure problem, not an intelligence problem.
+
+Gas Town is my attempt to build that infrastructure. A coordination layer that makes multi-agent work feel as natural as working with a single agent, but with the parallel processing power of a whole team.
+
+## What Reality Conspires Toward
+
+Here's what I've noticed: when I use Gas Town well — when I invest attention in proper convoy design instead of trying to manage individual agents — reality starts conspiring in my favor.
+
+Projects finish faster than expected. Solutions emerge that I wouldn't have thought of alone. The agents start coordinating in ways I didn't explicitly program. Dependencies resolve themselves through emergent communication patterns.
+
+This is pronoia in action. When you invest attention wisely at the orchestration level, that attention compounds across the whole system. The quality of coordination improves not just because the tools are better, but because the structure itself becomes more aligned with how complex work actually gets done.
+
+The future belongs to those who learn to orchestrate intelligence rather than just applying it. Gas Town is one step toward that future. A coordination layer that makes multi-agent collaboration feel less like managing a team and more like conducting a symphony.
+
+Your attention is finite. But when you invest it in proper orchestration, it can coordinate unlimited computational power. That's not just a productivity hack — it's a fundamental shift in how humans and AI systems can work together.
+
+The convoy is waiting. Time to start conducting.
+
+*Gas Town (`gt`) is available as a Go binary. For setup instructions and documentation, see the [project repository](https://github.com/kkeeland/gas-town). The future is multi-agent. Let's make sure it's well-orchestrated.*
