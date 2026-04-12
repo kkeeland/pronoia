@@ -8,6 +8,16 @@ export const metadata: Metadata = {
 
 const projects = [
     {
+        name: "AkroResearch.com",
+        tagline: "Trusted Science. Proven Purity.",
+        description:
+            "Full-stack research peptide e-commerce platform with custom backend, age-gated access, lot-specific COA publishing, loyalty rewards program, and multi-language support. Built on Next.js with a fully custom e-commerce backend and PostHog analytics.",
+        role: "Developer",
+        url: "https://akroresearch.com",
+        screenshot: "/screenshots/akro.png",
+        tags: ["Next.js", "E-Commerce", "PostHog", "Health"],
+    },
+    {
         name: "Peptok.ai",
         tagline: "Your Science-Backed Guide to Peptides",
         description:
@@ -45,7 +55,7 @@ export default function ProjectsPage() {
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
                 <header className="mb-16">
                     <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-                        Projects
+                        Kevin Keeland // Engineered Happiness
                     </h1>
                     <p className="text-xl text-secondary max-w-2xl">
                         Things I&apos;ve built. From research platforms to consumer brands —
