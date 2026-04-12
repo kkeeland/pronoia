@@ -48,7 +48,7 @@ export default function Footer() {
                         <ul className="space-y-2">
                             <li>
                                 <a
-                                    href="https://github.com/kevinkeeland"
+                                    href="https://github.com/Kkeeland"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="text-secondary hover:text-primary transition-colors inline-flex items-center gap-2"

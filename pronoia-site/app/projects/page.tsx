@@ -112,7 +112,7 @@ export default function ProjectsPage() {
                 <div className="mt-16 text-center">
                     <p className="text-secondary mb-4">More code lives on GitHub.</p>
                     <a
-                        href="https://github.com/kevinkeeland"
+                        href="https://github.com/Kkeeland"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-2 px-6 py-3 border-2 border-primary text-primary rounded-lg hover:bg-surface transition-colors font-medium"
